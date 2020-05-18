@@ -1,0 +1,41 @@
+.letter-withoutPlay  {
+    background: black;
+    border: 0.4rem black;
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    width: 15px;
+    margin: 1rem;
+    font-size: 10px;
+    color: white;
+    transition : 2s ease;
+}
+
+
+/* #LetterA:hover {
+    width: 300px;
+    /* height: 300px;
+    -webkit-transform: rotate(180deg); /* Safari */
+    /* transform: rotate(180deg); */ 
+/* } */ 
+
+.playing{
+    transform : scale(1.1);
+    border-color : green;
+    box-shadow : 0 0 1rem green;
+}
+
+
+
+.keys {
+    height :40vh;
+    width : 90vh;
+    border-radius: 2rem blue;
+    display: flex;
+    align-content: center;
+    flex : 2;
+    border : blue;
+    background: grey;
+    justify-content: flex-start;
+    flex-wrap : wrap;
+}
