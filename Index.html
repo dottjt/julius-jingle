@@ -1,70 +1,72 @@
 <html>
-    <head>
-       <link rel="stylesheet" href="keyboard.css">
-    </head>
-    <body>
-            <div id="abc"></div>
-<div class="keys">
-    <div data-key="65" id="LetterA" class="letter-withoutPlay">
-        <kbd>A</kbd>
-        <span class="sound">The Question</span>
-    </div>
-    <div data-key="83" class="letter-withoutPlay">
-            <kbd>S</kbd>
-            <span class="sound">hihat</span>
-    </div>
-    <div data-key="68" class="letter-withoutPlay">
-            <kbd>D</kbd>
-            <span class="sound">clap</span>
-    </div>
-    <div data-key="70" class="letter-withoutPlay">
-            <kbd>F</kbd>
-            <span class="sound">hihat</span>
-    </div>
-    <div data-key="71" class="letter-withoutPlay">
-            <kbd>G</kbd>
-            <span class="sound">clap</span>
-        </div>
 
+<head>
+
+  <link rel="stylesheet" href="keyboard.css">
+</head>
+
+<body>
+  <div class="main">
+    <div data-key="a" class="button__container">
+      <kbd>A</kbd><br/><span class="sound">The Question</span>
+      <audio data-key="a" src="sounds/cake.mp3"></audio>
     </div>
-    <audio data-key="65" src="sounds\ynm.mp3"></audio>
-    <audio data-key="83" src="sounds\Queen.mp3"></audio>
-    <audio data-key="68" src="sounds\Gang.mp3"></audio>
-    <audio data-key="70" src="sounds\rr.mp3"></audio>
-    <audio data-key="71" src="sounds\ynm.mp3"></audio>
+    <div data-key="r" class="button__container">
+      <kbd>R</kbd><br/><span class="sound">The Topic</span>
+      <audio data-key="r" src="sounds/cake.mp3"></audio>
+    </div>
+    <div data-key="s" class="button__container">
+      <kbd>S</kbd><br/><span class="sound">The Viewermail</span>
+      <audio data-key="s" src="sounds/cake.mp3"></audio>
+    </div>
+    <div data-key="t" class="button__container">
+      <kbd>T</kbd><br/><span class="sound">The Quote</span>
+      <audio data-key="t" src="sounds/cake.mp3"></audio>
+    </div>
+    <div data-key="d" class="button__container">
+      <kbd>D</kbd><br/><span class="sound">Theme</span>
+      <audio data-key="d" src="sounds/cake.mp3"></audio>
+    </div>
+  </div>a
 
-<script>
-
+  <script>
     window.addEventListener('keydown', playSound);
 
-    function playSound(e){
-        // Get key pressed from user and pass it to audio div.
-        const audio = document.querySelector(`audio[data-key = "${e.keyCode}"]`);
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key = "${e.key}"]`);
+      const key = document.querySelector(`div[data-key="${e.key}"]`);
 
-        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+      if (!audio) return;
+      // Add transition effects upon key press.
+      key.classList.add('playing');
+      // Reset the audio evertime a key press is done.
 
-        // if no matching audio elements, exit the function.
-        if(!audio) return;
-        // Add transition effects upon key press.
-        key.classList.add('playing');
-        // Reset the audio evertime a key press is done.
+      if (isPlaying(audio)) {
+        audio.pause();
+      } else {
         audio.currentTime = 0;
         audio.play();
+      }
     }
 
     // Upon transition end, stop the audio and remove the transition effects in css. Get key node list and add a callback to transition end function.
     const keys = document.querySelectorAll('.keys');
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
-
-    function removeTransition(e){ console.log(e);
-        if(e.propertyName !== 'transform') return;
-            e.target.classList.remove('playing');
-            // Get the audio element and pause the audio. (If a new key is presses, audio is reset to play from the start. So, need not reset here again.)
-            const audio = document.querySelector(`audio[data-key = "${e.target.attributes[0]["nodeValue"]}"]`);
-            audio.pause();
+    function removeTransition(e) {
+      console.log(e);
+      if (e.propertyName !== 'transform') return;
+      e.target.classList.remove('playing');
+      // Get the audio element and pause the audio. (If a new key is presses, audio is reset to play from the start. So, need not reset here again.)
+      const audio = document.querySelector(`audio[data-key = "${e.target.attributes[0]["nodeValue"]}"]`);
+      audio.pause();
     }
 
-</script>
-    </body>
+    function isPlaying(audio) {
+      return !audio.paused && !audio.ended && 0 < audio.currentTime;
+    }
+
+  </script>
+</body>
+
 </html>
