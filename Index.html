@@ -7,47 +7,55 @@
 
 <body>
   <div class="main">
+    <!-- GENERIC KEYS -->
     <div data-key="a" class="button__container">
-      <kbd>A</kbd><br/><span class="sound">The Question</span>
-      <audio data-key="a" src="sounds/cake.mp3"></audio>
+      <kbd data-key="a">a</kbd><br/><span data-key="a" class="sound">The Topic</span>
+      <audio data-key="a" src="the_topic/the_topic_1.mp3"></audio>
     </div>
     <div data-key="r" class="button__container">
-      <kbd>R</kbd><br/><span class="sound">The Topic</span>
-      <audio data-key="r" src="sounds/cake.mp3"></audio>
+      <kbd data-key="r">r</kbd><br/><span data-key="r" class="sound">The Question</span>
+      <audio data-key="r" src="the_question/the_question_1.mp3"></audio>
     </div>
     <div data-key="s" class="button__container">
-      <kbd>S</kbd><br/><span class="sound">The Viewermail</span>
-      <audio data-key="s" src="sounds/cake.mp3"></audio>
+      <kbd data-key="s">s</kbd><br/><span data-key="s" class="sound">The Viewermail</span>
+      <audio data-key="s" src="the_viewermail/the_viewermail_1.mp3"></audio>
     </div>
     <div data-key="t" class="button__container">
-      <kbd>T</kbd><br/><span class="sound">The Quote</span>
-      <audio data-key="t" src="sounds/cake.mp3"></audio>
+      <kbd data-key="t">t</kbd><br/><span data-key="t" class="sound">Theme</span>
+      <audio data-key="t" src="theme/theme.mp3"></audio>
     </div>
-    <div data-key="d" class="button__container">
-      <kbd>D</kbd><br/><span class="sound">Theme</span>
-      <audio data-key="d" src="sounds/cake.mp3"></audio>
-    </div>
-  </div>a
+    <!-- GENERIC KEYS END -->
 
+
+  </div>
+
+  <!-- RANDOM THE TOPIC -->
+  <audio class="random__the__topic" src="the_topic/the_topic_1.mp3"></audio>
+  <audio class="random__the__topic" src="the_topic/the_topic_2.mp3"></audio>
+  <audio class="random__the__topic" src="the_topic/the_topic_3.mp3"></audio>
+  <audio class="random__the__topic" src="the_topic/the_topic_4.mp3"></audio>
+  <audio class="random__the__topic" src="the_topic/the_topic_5.mp3"></audio>
+  <audio class="random__the__topic" src="the_topic/the_topic_6.mp3"></audio>
+
+  <!-- RANDOM THE QUESTION -->
+  <audio class="random__the__question" src="the_question/the_question_1.mp3"></audio>
+  <audio class="random__the__question" src="the_question/the_question_2.mp3"></audio>
+  <audio class="random__the__question" src="the_question/the_question_3.mp3"></audio>
+  <audio class="random__the__question" src="the_question/the_question_4.mp3"></audio>
+  <audio class="random__the__question" src="the_question/the_question_5.mp3"></audio>
+  <audio class="random__the__question" src="the_question/the_question_6.mp3"></audio>
+
+  <!-- RANDOM THE VIEWERMAIL -->
+  <audio class="random__the__viewermail" src="the_viewermail/the_viewermail_1.mp3"></audio>
+  <audio class="random__the__viewermail" src="the_viewermail/the_viewermail_2.mp3"></audio>
+  <audio class="random__the__viewermail" src="the_viewermail/the_viewermail_3.mp3"></audio>
+  <audio class="random__the__viewermail" src="the_viewermail/the_viewermail_4.mp3"></audio>
+
+  <script src="src/howler.js"></script>
+  <script src="src/playSound.js"></script>
   <script>
     window.addEventListener('keydown', playSound);
-
-    function playSound(e) {
-      const audio = document.querySelector(`audio[data-key = "${e.key}"]`);
-      const key = document.querySelector(`div[data-key="${e.key}"]`);
-
-      if (!audio) return;
-      // Add transition effects upon key press.
-      key.classList.add('playing');
-      // Reset the audio evertime a key press is done.
-
-      if (isPlaying(audio)) {
-        audio.pause();
-      } else {
-        audio.currentTime = 0;
-        audio.play();
-      }
-    }
+    document.querySelectorAll('.button__container').forEach(el => el.addEventListener('click', playSound));
 
     // Upon transition end, stop the audio and remove the transition effects in css. Get key node list and add a callback to transition end function.
     const keys = document.querySelectorAll('.keys');
@@ -65,7 +73,6 @@
     function isPlaying(audio) {
       return !audio.paused && !audio.ended && 0 < audio.currentTime;
     }
-
   </script>
 </body>
 
