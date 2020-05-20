@@ -6,14 +6,18 @@ function chooseDataKey(e) {
   }
 }
 
-function playSound(e) {
-  let audio = null;
-  // let howlerTheme = new Howl({
-  //   src: ['./theme/theme.mp3']
-  // });
+let audio = null;
 
+function playSound(e) {
   const dataKey = chooseDataKey(e);
-  const isRandomKey = dataKey === "A" || dataKey === "R" || dataKey === "S";
+  const isRandomKey = dataKey === "A" || dataKey === "R" || dataKey === "S" || dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b";
+
+  if (dataKey !== "t" && audio !== null) {
+    if (isPlaying(audio)) {
+      audio.pause();
+      return;
+    }
+  }
 
   // play random the_topic
   if (dataKey === "A") {
@@ -32,6 +36,29 @@ function playSound(e) {
     const audios = document.querySelectorAll('.random__the__viewermail');
     audio = audios[Math.floor(Math.random() * audios.length)];
   }
+
+  if (dataKey === "z") {
+    const audios = document.querySelectorAll('.random__fail');
+    audio = audios[Math.floor(Math.random() * audios.length)];
+    console.log(audio);
+  }
+  if (dataKey === "x") {
+    const audios = document.querySelectorAll('.random__violent');
+    audio = audios[Math.floor(Math.random() * audios.length)];
+  }
+  if (dataKey === "c") {
+    const audios = document.querySelectorAll('.random__success');
+    audio = audios[Math.floor(Math.random() * audios.length)];
+  }
+  if (dataKey === "v") {
+    const audios = document.querySelectorAll('.random__random');
+    audio = audios[Math.floor(Math.random() * audios.length)];
+  }
+  if (dataKey === "b") {
+    const audios = document.querySelectorAll('.random__suspense');
+    audio = audios[Math.floor(Math.random() * audios.length)];
+  }
+
   // if normal key press
   if (!isRandomKey) {
     audio = document.querySelector(`audio[data-key="${dataKey}"]`);
@@ -50,7 +77,7 @@ function playSound(e) {
   // Reset the audio evertime a key press is done.
 
   if (isPlaying(audio)) {
-    if (dataKey === "t")  {
+    if (dataKey === "t") {
       console.log(audio);
       fade();
     } else {
