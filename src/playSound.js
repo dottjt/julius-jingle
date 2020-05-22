@@ -7,6 +7,8 @@ function chooseDataKey(e) {
 }
 
 let audio = null;
+// I was thinking
+const audioList = [];
 
 function playSound(e) {
   const dataKey = chooseDataKey(e);
@@ -14,21 +16,25 @@ function playSound(e) {
     dataKey === "A" || dataKey === "R" || dataKey === "S" ||
     dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b";
 
-  if ((dataKey !== "t" || dataKey !== "g") && audio !== null) {
-    if (isPlaying(audio)) {
-      audio.pause();
-      return;
-    }
+  if (dataKey === "p" && audio !== null) {
+    audio.pause();
   }
 
+  // if ((dataKey !== "t" || dataKey !== "d") && audio !== null) {
+  //   if (isPlaying(audio)) {
+  //     audio.pause();
+  //     return;
+  //   }
+  // }
+
   // play random the_topic
-  if (dataKey === "A") {
+  if (dataKey === "R") {
     const audios = document.querySelectorAll('.random__the__topic');
     audio = audios[Math.floor(Math.random() * audios.length)];
   };
 
   // play random the_question
-  if (dataKey === "R") {
+  if (dataKey === "A") {
     const audios = document.querySelectorAll('.random__the__question');
     audio = audios[Math.floor(Math.random() * audios.length)];
   }
@@ -79,7 +85,8 @@ function playSound(e) {
   // Reset the audio evertime a key press is done.
 
   if (isPlaying(audio)) {
-    if (dataKey === "t" || dataKey === "g") {
+    console.log(dataKey)
+    if (dataKey === "t" || dataKey === "d") {
       console.log(audio);
       fade();
     } else {
