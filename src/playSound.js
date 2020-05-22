@@ -10,9 +10,11 @@ let audio = null;
 
 function playSound(e) {
   const dataKey = chooseDataKey(e);
-  const isRandomKey = dataKey === "A" || dataKey === "R" || dataKey === "S" || dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b";
+  const isRandomKey =
+    dataKey === "A" || dataKey === "R" || dataKey === "S" ||
+    dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b";
 
-  if (dataKey !== "t" && audio !== null) {
+  if ((dataKey !== "t" || dataKey !== "g") && audio !== null) {
     if (isPlaying(audio)) {
       audio.pause();
       return;
@@ -77,7 +79,7 @@ function playSound(e) {
   // Reset the audio evertime a key press is done.
 
   if (isPlaying(audio)) {
-    if (dataKey === "t") {
+    if (dataKey === "t" || dataKey === "g") {
       console.log(audio);
       fade();
     } else {
