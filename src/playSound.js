@@ -14,12 +14,14 @@ function playSound(e) {
   const dataKey = chooseDataKey(e);
   const isRandomKey =
     dataKey === "A" || dataKey === "R" || dataKey === "S" ||
-    dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b";
+    dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b"
+    dataKey === "q";
 
   if (dataKey === "p" && audio !== null) {
-    audio.pause();
+    audioList.forEach(aud => aud.pause());
+    // audio.pause();
   }
-
+  console.log(dataKey);
   // if ((dataKey !== "t" || dataKey !== "d") && audio !== null) {
   //   if (isPlaying(audio)) {
   //     audio.pause();
@@ -66,7 +68,11 @@ function playSound(e) {
     const audios = document.querySelectorAll('.random__suspense');
     audio = audios[Math.floor(Math.random() * audios.length)];
   }
-
+  if (dataKey === "q") {
+    const audios = document.querySelectorAll('.random__additional');
+    console.log(audios);
+    audio = audios[Math.floor(Math.random() * audios.length)];
+  }
   // if normal key press
   if (!isRandomKey) {
     audio = document.querySelector(`audio[data-key="${dataKey}"]`);
@@ -78,11 +84,15 @@ function playSound(e) {
   // }
 
   // const key = document.querySelector(`div[data-key="${dataKey}"]`);
+  console.log('play', audio);
 
   if (!audio) return;
   // Add transition effects upon key press.
   // key.classList.add('playing');
   // Reset the audio evertime a key press is done.
+
+
+  audioList.push(audio);
 
   if (isPlaying(audio)) {
     console.log(dataKey)
