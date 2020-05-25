@@ -97,13 +97,12 @@ function playSound(e) {
   // key.classList.add('playing');
   // Reset the audio evertime a key press is done.
 
-
   audioList.push(audio);
 
   if (isPlaying(audio)) {
     console.log(dataKey)
     if (dataKey === "t" || dataKey === "d") {
-      console.log(audio);
+      audio.volume = 0.75;
       fade();
     } else {
       audio.pause();
@@ -116,7 +115,7 @@ function playSound(e) {
   function fade(){
     if (audio.volume > 0.1){
       console.log(audio.volume);
-      audio.volume -= 0.1;
+      audio.volume -= 0.03;
       setTimeout(fade, 200);
     } else {
       audio.volume = 1;
