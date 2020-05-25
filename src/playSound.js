@@ -33,45 +33,52 @@ function playSound(e) {
   if (dataKey === "R") {
     const audios = document.querySelectorAll('.random__the__topic');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 1;
   };
 
   // play random the_question
   if (dataKey === "A") {
     const audios = document.querySelectorAll('.random__the__question');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 1;
   }
 
   // play random the_viewermail
   if (dataKey === "S") {
     const audios = document.querySelectorAll('.random__the__viewermail');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 1;
   }
 
   if (dataKey === "z") {
     const audios = document.querySelectorAll('.random__fail');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    console.log(audio);
+    audio.volume = 0.5;
   }
   if (dataKey === "x") {
     const audios = document.querySelectorAll('.random__violent');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 0.4;
   }
   if (dataKey === "c") {
     const audios = document.querySelectorAll('.random__success');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 0.7;
   }
   if (dataKey === "v") {
     const audios = document.querySelectorAll('.random__random');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 0.5;
   }
   if (dataKey === "b") {
     const audios = document.querySelectorAll('.random__suspense');
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 0.5;
   }
   if (dataKey === "q") {
     const audios = document.querySelectorAll('.random__additional');
-    console.log(audios);
     audio = audios[Math.floor(Math.random() * audios.length)];
+    audio.volume = 0.6;
   }
   // if normal key press
   if (!isRandomKey) {
@@ -84,7 +91,6 @@ function playSound(e) {
   // }
 
   // const key = document.querySelector(`div[data-key="${dataKey}"]`);
-  console.log('play', audio);
 
   if (!audio) return;
   // Add transition effects upon key press.
@@ -103,7 +109,6 @@ function playSound(e) {
       audio.pause();
     }
   } else {
-    audio.volume = 1;
     audio.currentTime = 0;
     audio.play();
   }
