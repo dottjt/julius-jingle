@@ -118,7 +118,7 @@ function playSound(e) {
       audio.volume -= 0.03;
       setTimeout(fade, 200);
     } else {
-      audio.volume = 1;
+      audio.volume = 0.75;
       audio.pause();
     }
   }
