@@ -15,8 +15,8 @@ function playSound(e) {
   const isRandomKey =
     dataKey === "A" || dataKey === "R" || dataKey === "S" ||
     dataKey === "z" || dataKey === "x" || dataKey === "c" ||
-    dataKey === "v" || dataKey === "b" || dataKey === "w" ||
-    dataKey === "q" || dataKey === "f";
+    dataKey === "v" || dataKey === "b" || dataKey === "w";
+    // dataKey === "q" || dataKey === "f";
 
   if (dataKey === "p" && audio !== null) {
     audioList.forEach(aud => aud.pause());
@@ -86,6 +86,7 @@ function playSound(e) {
   if (!isRandomKey) {
     audio = document.querySelector(`audio[data-key="${dataKey}"]`);
   }
+  console.log(audio);
 
   // if (dataKey === "t") {
   //   var id1 = howlerTheme.play();
@@ -98,6 +99,7 @@ function playSound(e) {
   // Add transition effects upon key press.
   // key.classList.add('playing');
   // Reset the audio evertime a key press is done.
+
   if (audio) {
     audioList.push(audio);
   }
