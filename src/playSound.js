@@ -100,7 +100,7 @@ function playSound(e) {
 
   audioList.push(audio);
 
-  if (isPlaying(audio)) {
+  if (audio && isPlaying(audio)) {
     console.log(dataKey)
     if (dataKey === "t" || dataKey === "d") {
       audio.volume = 0.75;
@@ -109,27 +109,29 @@ function playSound(e) {
       audio.pause();
     }
   } else {
-    audio.currentTime = 0;
     console.log(audio);
+    audio.currentTime = 0;
     audio.play();
   }
 
   function fade(){
-    if (audio.volume !== null){
-      let volume = audio.volume;
-      volume -= 0.04;
-      if (volume < -0.01) {
-        audio.volume = null;
-        console.log(audio.volume, 'now null');
-        return;
+    if (audio) {
+      if (audio.volume !== null){
+        let volume = audio.volume;
+        volume -= 0.04;
+        if (volume < -0.01) {
+          audio.volume = null;
+          console.log(audio.volume, 'now null');
+          return;
+        } else {
+          audio.volume -= 0.04;
+          console.log(audio && audio.volume);
+        }
+        setTimeout(fade, 200);
       } else {
-        audio.volume -= 0.04;
-        console.log(audio.volume);
+        audio.volume = 0.75;
+        audio.pause();
       }
-      setTimeout(fade, 200);
-    } else {
-      audio.volume = 0.75;
-      audio.pause();
     }
   }
 }
