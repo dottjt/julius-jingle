@@ -115,9 +115,17 @@ function playSound(e) {
   }
 
   function fade(){
-    if (audio.volume > 0.1){
-      console.log(audio.volume);
-      audio.volume -= 0.03;
+    if (audio.volume !== null){
+      let volume = audio.volume;
+      volume -= 0.04;
+      if (volume < -0.01) {
+        audio.volume = null;
+        console.log(audio.volume, 'now null');
+        return;
+      } else {
+        audio.volume -= 0.04;
+        console.log(audio.volume);
+      }
       setTimeout(fade, 200);
     } else {
       audio.volume = 0.75;
