@@ -15,7 +15,8 @@ function playSound(e) {
   const isRandomKey =
     dataKey === "A" || dataKey === "R" || dataKey === "S" ||
     dataKey === "z" || dataKey === "x" || dataKey === "c" ||
-    dataKey === "v" || dataKey === "b" || dataKey === "w";
+    dataKey === "v" || dataKey === "b" || dataKey === "w" ||
+    dataKey === "q" || dataKey === "f";
 
   if (dataKey === "p" && audio !== null) {
     audioList.forEach(aud => aud.pause());
