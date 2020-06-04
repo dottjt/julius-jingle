@@ -97,8 +97,9 @@ function playSound(e) {
   // Add transition effects upon key press.
   // key.classList.add('playing');
   // Reset the audio evertime a key press is done.
-
-  audioList.push(audio);
+  if (audio) {
+    audioList.push(audio);
+  }
 
   if (audio && isPlaying(audio)) {
     console.log(dataKey)
