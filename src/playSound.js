@@ -14,8 +14,8 @@ function playSound(e) {
   const dataKey = chooseDataKey(e);
   const isRandomKey =
     dataKey === "A" || dataKey === "R" || dataKey === "S" ||
-    dataKey === "z" || dataKey === "x" || dataKey === "c" || dataKey === "v" || dataKey === "b"
-    dataKey === "q";
+    dataKey === "z" || dataKey === "x" || dataKey === "c" ||
+    dataKey === "v" || dataKey === "b" || dataKey === "w";
 
   if (dataKey === "p" && audio !== null) {
     audioList.forEach(aud => aud.pause());
@@ -75,11 +75,12 @@ function playSound(e) {
     audio = audios[Math.floor(Math.random() * audios.length)];
     audio.volume = 0.5;
   }
-  if (dataKey === "q") {
-    const audios = document.querySelectorAll('.random__additional');
+  if (dataKey === "w") {
+    const audios = document.querySelectorAll('.random__waifu');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.6;
+    audio.volume = 0.5;
   }
+
   // if normal key press
   if (!isRandomKey) {
     audio = document.querySelector(`audio[data-key="${dataKey}"]`);
@@ -109,6 +110,7 @@ function playSound(e) {
     }
   } else {
     audio.currentTime = 0;
+    console.log(audio);
     audio.play();
   }
 
