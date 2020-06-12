@@ -86,7 +86,6 @@ function playSound(e) {
   if (!isRandomKey) {
     audio = document.querySelector(`audio[data-key="${dataKey}"]`);
   }
-  console.log(audio);
 
   // if (dataKey === "t") {
   //   var id1 = howlerTheme.play();
@@ -107,7 +106,7 @@ function playSound(e) {
   if (audio && isPlaying(audio)) {
     console.log(dataKey)
     if (dataKey === "t" || dataKey === "d") {
-      audio.volume = 0.75;
+      audio.volume = 1;
       fade();
     } else {
       audio.pause();
@@ -123,13 +122,11 @@ function playSound(e) {
       if (audio.volume !== null){
         let volume = audio.volume;
         volume -= 0.04;
-        if (volume < -0.01) {
-          audio.volume = null;
-          console.log(audio.volume, 'now null');
+        if (volume < 0.01) {
+          audio.volume = 0;
           return;
         } else {
           audio.volume -= 0.04;
-          console.log(audio && audio.volume);
         }
         setTimeout(fade, 200);
       } else {
