@@ -54,32 +54,32 @@ function playSound(e) {
   if (dataKey === "z") {
     const audios = document.querySelectorAll('.random__fail');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.5;
+    audio.volume = 0.8;
   }
   if (dataKey === "x") {
     const audios = document.querySelectorAll('.random__violent');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.4;
+    audio.volume = 0.8;
   }
   if (dataKey === "c") {
     const audios = document.querySelectorAll('.random__success');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.7;
+    audio.volume = 0.8;
   }
   if (dataKey === "v") {
     const audios = document.querySelectorAll('.random__random');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.5;
+    audio.volume = 0.8;
   }
   if (dataKey === "b") {
     const audios = document.querySelectorAll('.random__suspense');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.5;
+    audio.volume = 0.8;
   }
   if (dataKey === "w") {
     const audios = document.querySelectorAll('.random__waifu');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.5;
+    audio.volume = 0.8;
   }
 
   // if normal key press
