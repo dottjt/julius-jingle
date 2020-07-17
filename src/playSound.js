@@ -34,27 +34,27 @@ function playSound(e) {
   if (dataKey === "R") {
     const audios = document.querySelectorAll('.random__the__topic');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 1;
+    audio.volume = 1.4;
   };
 
   // play random the_question
   if (dataKey === "A") {
     const audios = document.querySelectorAll('.random__the__question');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 1;
+    audio.volume = 1.4;
   }
 
   // play random the_viewermail
   if (dataKey === "S") {
     const audios = document.querySelectorAll('.random__the__viewermail');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 1;
+    audio.volume = 1.4;
   }
 
   if (dataKey === "z") {
     const audios = document.querySelectorAll('.random__fail');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.8;
+    audio.volume = 1;
   }
   if (dataKey === "x") {
     const audios = document.querySelectorAll('.random__violent');
@@ -64,22 +64,22 @@ function playSound(e) {
   if (dataKey === "c") {
     const audios = document.querySelectorAll('.random__success');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.8;
+    audio.volume = 1;
   }
   if (dataKey === "v") {
     const audios = document.querySelectorAll('.random__random');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.8;
+    audio.volume = 1;
   }
   if (dataKey === "b") {
     const audios = document.querySelectorAll('.random__suspense');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.8;
+    audio.volume = 1;
   }
   if (dataKey === "w") {
     const audios = document.querySelectorAll('.random__waifu');
     audio = audios[Math.floor(Math.random() * audios.length)];
-    audio.volume = 0.8;
+    audio.volume = 1;
   }
 
   // if normal key press
